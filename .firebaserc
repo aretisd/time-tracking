@@ -1,0 +1,15 @@
+{
+  "targets": {
+    "young-warrior-10694": {
+      "hosting": {
+        "time-tracking": [
+          "young-warrior-10694"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "staging": "young-warrior-10694",
+    "default": "young-warrior-10694"
+  }
+}

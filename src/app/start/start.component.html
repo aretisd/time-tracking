@@ -1,0 +1,26 @@
+<div class="content" role="main">
+        <mat-card class="regis-card">
+            <mat-card-header>
+                <mat-card-title>Start</mat-card-title>
+            </mat-card-header>
+            <mat-card-content >   
+                <form [formGroup]="startForm" (ngSubmit)="onSubmit()">
+                    <!-- <mat-form-field class="example-full-width">
+                        <input matInput class="form-control" formControlName="tagid" required placeholder="Tag ID">
+                    </mat-form-field> -->
+                    
+                    <div formArrayName="tagid"
+                        *ngFor="let tag of startForm.get('tagid')['controls']; let i = index;">
+                        <div [formGroupName]="i">
+                            <mat-form-field class="example-full-width">
+                            <input matInput formControlName="tagNum" required placeholder="Tag ID">
+                        </mat-form-field>
+                        </div>
+                    
+                    </div>
+                    <button mat-fab color="primary" (click)="addTag()"type="button"> Add +</button>
+                    <button mat-raised-button color="primary"  type="submit" [disabled]="!startForm.valid">Confirm</button>
+                </form>
+            </mat-card-content>     
+        </mat-card>
+    </div>

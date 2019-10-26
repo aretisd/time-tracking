@@ -1,0 +1,45 @@
+
+<div class="content" role="main">
+        <mat-card class="regis-card">
+            <mat-card-header>
+                <mat-card-title>Print</mat-card-title>
+            </mat-card-header>
+            <mat-card-content >   
+                <form [formGroup]="printForm" (ngSubmit)="onSubmit()">
+                    <mat-form-field class="example-full-width">
+                        <input matInput class="form-control" formControlName="tagid" required placeholder="Tag ID">
+                    </mat-form-field>                                  
+                    <button mat-raised-button color="primary"  type="submit" [disabled]="!printForm.valid">Confirm</button>
+                </form>
+            </mat-card-content>     
+        </mat-card>
+    </div>
+<div *ngIf="printIsTrue && comp" id="print-section" class="print">
+    <div class="container-fluid" *ngFor="let comp of comp">
+        <div class="row no-gutters">
+            <div class="col">
+                <h1> The Mall Young Warrior </h1>
+            </div>
+        </div>
+        <h3> ผู้เข้าแข่งขัน </h3>
+        <div class="row no-gutters itemsgroup">
+            <div class="col-3 label"> 
+                <p>ชื่อ: {{comp.name}}</p>
+                <p>อายุ:  {{comp.age}}</p>
+                <p>เพศ: {{comp.gender}}</p>
+                <p>รุ่น: {{groupFin}}</p>
+                <p>เริ่ม: {{startTime | date: 'H:mm:ss'}}</p>
+                <p>จบ: {{endTime | date: 'H:mm:ss'}}</p>
+                <p>เวลาที่ใช้: {{comp.usedtime | date: 'mm:ss'}} นาที</p>
+                <p>**กรณีผู้ได้รับรางวัลไม่สามารถอยู่รับรางวัลได้ ทางทีมงานจะจัดส่งของรางวัลไปให้ตามที่อยู่ที่ท่านกรอกในใบสมัคร
+
+                        มอบรางวัลเวลา 13.00 น.**</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <button mat-raised-button color="warn" *ngIf="printIsTrue"
+    [printStyle]="{h1 : {'color': 'red'}, itemsgroup : {'border-style': 'solid'}}"
+    printSectionId="print-section"
+    ngxPrint
+    >print</button>
